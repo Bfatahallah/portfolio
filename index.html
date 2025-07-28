@@ -1,0 +1,1070 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badr Fatahallah - Transitioning to Frontend Development</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --accent: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .experience-badge {
+            position: relative;
+            bottom: -20px;
+            right: -20px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .experience-badge h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .experience-badge p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .education-item {
+            border-left: 4px solid var(--primary);
+            padding-left: 24px;
+            margin-bottom: 24px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .education-item .school {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .education-item .year {
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .education-item .gpa {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .certification-item {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 16px;
+            background: #f3e8ff;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .certification-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .certification-item h4 {
+            font-weight: 600;
+        }
+
+        .certification-item p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #f8fafc;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            left: 32px;
+            top: 80px;
+            width: 2px;
+            height: 40px;
+            background: #cbd5e1;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .job-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .job-header .company {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .job-header .period {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .achievements li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 24px;
+        }
+
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tech-tag {
+            background: #dbeafe;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #f8fafc;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .skill-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .contact-item h3 {
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: #f8fafc;
+            padding: 32px;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            margin-top: 30px;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i data-lucide="code"></i></div>
+                    <span>Badr Fatahallah</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span class="highlight">Badr Fatahallah</span></h1>
+                    <p>Electromechanical Engineer transitioning into Frontend Development.</p>
+                    <p>With a strong foundation in electromechanical engineering and hands-on experience as a machine operator and maintenance technician, I am now focused on learning frontend development. My skills include fast learning, teamwork, and an eye for precision, which will help me thrive in the tech world.</p>
+                    <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="mailto:b.fatahallah@hotmail.fr" class="btn">
+                            <i data-lucide="mail"></i>
+                            Contact Me
+                        </a>
+                        <a href="#" class="btn btn-outline">
+                            <i data-lucide="github"></i>
+                            GitHub
+                        </a>
+                        <a href="#" class="btn btn-outline">
+                            <i data-lucide="linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-circle">
+                        <img src="https://placehold.co/320x320/3b82f6/ffffff?text=Badr+Fatahallah" alt="Badr Fatahallah">
+                    </div>
+                    <div class="experience-badge">
+                        <h3>Transitioning</h3>
+                        <p>From Electromechanical Engineering to Tech</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Learn more about my background, education, and professional journey</p>
+            </div>
+            <div class="about-content">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                        <div style="width: 32px; height: 32px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i data-lucide="graduation-cap"></i>
+                        </div>
+                        <h3 style="font-size: 1.75rem; font-weight: 700; color: var(--text);">Education</h3>
+                    </div>
+                    <div class="education-item">
+                        <h4>Certificate in Heavy Equipment Maintenance</h4>
+                        <p class="school">Mohammed VI School</p>
+                        <p class="year">2018 - 2019</p>
+                    </div>
+                    <div class="education-item">
+                        <h4>Technician Diploma in Electromechanics of Automated Systems</h4>
+                        <p class="school">ISTA Khouribga</p>
+                        <p class="year">2016 - 2018</p>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                        <div style="width: 32px; height: 32px; background: linear-gradient(45deg, var(--secondary), #7c3aed); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <h3 style="font-size: 1.75rem; font-weight: 700; color: var(--text);">Certifications</h3>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div>
+                            <h4>Machine Operator Certification</h4>
+                            <p>Bank Al-Maghrib • 2019</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div>
+                            <h4>Heavy Equipment Maintenance Internship</h4>
+                            <p>Eurogres Afrique • 2019</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div>
+                            <h4>Electrical Services Internship</h4>
+                            <p>OCP Group • 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+                <p>My journey in the electromechanical field and key achievements</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Machine Operator</h3>
+                                <p class="company">Bank Al-Maghrib</p>
+                            </div>
+                            <p class="period">May 2019 - Present</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Ensure smooth machine operations and production preparation</li>
+                            <li>Monitor and execute production tasks</li>
+                            <li>Perform first and second-level maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Intern – Heavy Equipment Maintenance</h3>
+                                <p class="company">Eurogres Afrique</p>
+                            </div>
+                            <p class="period">April 2019 – May 2019</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Assembled and commissioned heavy machinery</li>
+                            <li>Serviced and repaired components, prepared for inspections</li>
+                            <li>Troubleshot equipment malfunctions</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Intern – Electrical Services</h3>
+                                <p class="company">OCP Group</p>
+                            </div>
+                            <p class="period">April 2018 – May 2018</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Assisted with preventive maintenance of electrical equipment</li>
+                            <li>Supported installations and diagnostics</li>
+                            <li>Helped create and update electrical schematics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <p>Technical abilities and soft skills that make me a valuable team member</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: linear-gradient(45deg, var(--primary), var(--secondary));">
+                            <i data-lucide="code"></i>
+                        </div>
+                        <h3>Frontend Development (Learning)</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React.js</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: linear-gradient(45deg, var(--accent), #059669);">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Fast Learning</li>
+                        <li>Teamwork</li>
+                        <li>Attention to Detail</li>
+                        <li>Problem Solving</li>
+                        <li>Adaptability</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: linear-gradient(45deg, #0891b2, #0e7490);">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <h3>Electromechanical Skills</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Machinery Operation</li>
+                        <li>Equipment Maintenance</li>
+                        <li>Electrical Troubleshooting</li>
+                        <li>Preventive Maintenance</li>
+                        <li>Project Coordination</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: linear-gradient(45deg, #7c2d12, #9a3412);">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <h3>Language Proficiency</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>French – Advanced (B2)</li>
+                        <li>English – Upper Intermediate (B2)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Let's Connect</h2>
+                <p>Ready to discuss opportunities or just want to chat about tech? Reach out!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Residence OSRA (A) 8885 G apt 03 (350), Ouled Hlal, Sala Al Jadida, Morocco</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+212687878578</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>b.fatahallah@hotmail.fr</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 40px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 24px;">Connect with me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i data-lucide="github"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="mail"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon"><i data-lucide="code"></i></div>
+                    <span>Badr Fatahallah</span>
+                </a>
+                <p>Electromechanical Engineer | Machine Operator | Maintenance Technician</p>
+                <div class="footer-social">
+                    <a href="github.com/Bfatahallah"><i data-lucide="github"></i></a>
+                    <a href="www.linkedin.com/in/bfatahallah/"><i data-lucide="linkedin"></i></a>
+                    <a href="b.fatahallah@hotmail.fr"><i data-lucide="mail"></i></a>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 Badr Fatahallah. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
